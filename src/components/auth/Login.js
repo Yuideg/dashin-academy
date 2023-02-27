@@ -8,6 +8,7 @@ import {Logo} from '../../components/logo';
 import { Iconify } from '../iconify';
 import {LoginForm} from '../../layouts/forms';
 import {useNavigate} from "react-router-dom";
+import moment from "moment-timezone";
 
 const StyledRoot = styled('div')(({ theme }) => ({
     [theme.breakpoints.up('md')]: {
@@ -40,9 +41,10 @@ export default function Login() {
 
     const mdUp = useResponsive('up', 'md');
     const navigate = useNavigate();
+    const currentYear = moment().get("year");
 
     const handleClick = () => {
-        navigate('/home', { replace: true });
+        navigate('/auth/register', { replace: true });
     };
     return (
         <>
@@ -105,6 +107,9 @@ export default function Login() {
                     </StyledContent>
                 </Container>
             </StyledRoot>
+            <Typography textAlign={"center"} component={"h5"}>
+                Copyright © {`${currentYear} All rights reserved.`}
+            </Typography>
         </>
     );
 }

@@ -5,7 +5,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { Box, Link } from '@mui/material';
 
-
+/* eslint-disable react/display-name */
 const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
   const theme = useTheme();
 

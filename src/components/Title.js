@@ -16,5 +16,6 @@ const useStyles = makeStyles({
 
 export default function Title(props) {
   const classes = useStyles()
+    // eslint-disable-next-line react/prop-types
   return <h1 className={classes.Container}>{props.children}</h1>;
 }

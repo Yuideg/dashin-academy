@@ -18,5 +18,6 @@ const useStyles = makeStyles({
 
 export default function Wrapper(props) {
   const classes = useStyles()
+    // eslint-disable-next-line react/prop-types
   return <div className={classes.Container}>{props.children}</div>;
 }

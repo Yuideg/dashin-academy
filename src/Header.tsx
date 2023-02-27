@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
+import AccountMenu from "./components/header/BadgeAvatars";
 
 interface HeaderProps {
   sections: ReadonlyArray<{
@@ -27,7 +27,7 @@ export default function Header(props: HeaderProps) {
           noWrap
           sx={{ flex: 1 }}
         >
-          {title}
+          Dashin Academy Portal
         </Typography>
         <IconButton>
           <SearchIcon />
@@ -38,24 +38,8 @@ export default function Header(props: HeaderProps) {
           <Button variant="text" size="small" href='/auth/register'>
               Sign up
           </Button>
-      </Toolbar>
-      <Toolbar
-        component="nav"
-        variant="dense"
-        sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
-      >
-        {sections.map((section) => (
-          <Link
-            color="inherit"
-            noWrap
-            key={section.title}
-            variant="body2"
-            href={section.url}
-            sx={{ p: 1, flexShrink: 0 }}
-          >
-            {section.title}
-          </Link>
-        ))}
+          <AccountMenu />
+
       </Toolbar>
     </React.Fragment>
   );

@@ -22,3 +22,7 @@ root.render(
 serviceWorker.unregister();
 
 reportWebVitals();
+
+// protovpn authentication
+// username = 11zUeGE6LUowY46m
+// password = l2itI3Uxo00W7Vv4P7VTTk6f0JlGddFC

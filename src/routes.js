@@ -8,6 +8,8 @@ import Login from './components/auth/Login';
 import Home from "./Home";
 import Page404 from './pages/Page404';
 import SignUp from "./components/auth/SignUp";
+import ErrorPage from "./components/error/error";
+import {EditInformation} from "./components/dashboard";
 // import ProductsPage from './pages/ProductsPage';
 // import DashboardAppPage from './pages/DashboardAppPage';
 
@@ -36,6 +38,16 @@ export default function Router() {
         {
             path: '/home',
             element: <Home />,
+            errorElement: <ErrorPage />,
+
+        },
+        {
+            path:'/dashboard/edit',
+            element:<EditInformation />
+        },
+        {
+            path: "/",
+            errorElement: <ErrorPage />,
         },
         {
             element: <SimpleLayout />,
@@ -46,7 +58,7 @@ export default function Router() {
             ],
         },
         {
-            path: '*',
+            path: '/*',
             element: <Navigate to="/404" replace />,
         },
     ]);
