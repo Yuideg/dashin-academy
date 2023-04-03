@@ -2,8 +2,7 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import {Button, FormControlLabel, IconButton, Menu, MenuItem, Tooltip} from '@mui/material';
+import { IconButton, Menu, MenuItem, Tooltip} from '@mui/material';
 import {useEffect} from "react";
 
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -11,7 +10,6 @@ import Divider from '@mui/material/Divider';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-// import pic from '../../../public/assets/pic.jpg'
 import {useNavigate} from "react-router-dom";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({

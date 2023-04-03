@@ -1,32 +1,33 @@
 import React from 'react'
 import { Navigate, useRoutes } from 'react-router-dom';
-// import DashboardLayout from './layouts/dashboard';
 import SimpleLayout from './layouts/simple';
-// import BlogPage from './pages/BlogPage';
-// import UserPage from './pages/UserPage';
 import Login from './components/auth/Login';
 import Home from "./Home";
 import Page404 from './pages/Page404';
 import SignUp from "./components/auth/SignUp";
 import ErrorPage from "./components/error/error";
 import {EditInformation} from "./components/dashboard";
-// import ProductsPage from './pages/ProductsPage';
-// import DashboardAppPage from './pages/DashboardAppPage';
-
+import DashboardLayout from "./layouts/dashboard";
+import DashboardAppPage from "./pages/DashboardAppPage";
+import UserPage from "./pages/UserPage";
+import ProductsPage from "./pages/ProductsPage";
+import BlogPage from "./pages/BlogPage";
+import PasswordResetPage from "./pages/PasswordReset";
+import StudentList from "./views/students/StudentList";
 
 export default function Router() {
     const routes = useRoutes([
-        // {
-        //     path: '/dashboard',
-        //     element: <DashboardLayout />,
-        //     children: [
-        //         { element: <Navigate to="/dashboard/app" />, index: true },
-        //         { path: 'app', element: <DashboardAppPage /> },
-        //         { path: 'user', element: <UserPage /> },
-        //         { path: 'products', element: <ProductsPage /> },
-        //         { path: 'blog', element: <BlogPage /> },
-        //     ],
-        // },
+        {
+            path: '/dashboard',
+            element: <DashboardLayout />,
+            children: [
+                { element: <Navigate to="/dashboard/app" />, index: true },
+                { path: 'app', element: <DashboardAppPage /> },
+                { path: 'password-reset', element: <PasswordResetPage /> },
+                { path: 'students', element: <StudentList /> },
+
+            ],
+        },
         {
             path: 'auth/register',
             element: <SignUp />,
@@ -58,7 +59,7 @@ export default function Router() {
             ],
         },
         {
-            path: '/*',
+            path: '*',
             element: <Navigate to="/404" replace />,
         },
     ]);

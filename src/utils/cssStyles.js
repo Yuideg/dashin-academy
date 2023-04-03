@@ -1,6 +1,4 @@
 import { alpha } from '@mui/material/styles';
-
-
 export function bgBlur(props) {
   const color = props?.color || '#000000';
   const blur = props?.blur || 6;
@@ -32,8 +30,6 @@ export function bgBlur(props) {
     backgroundColor: alpha(color, opacity),
   };
 }
-
-// ----------------------------------------------------------------------
 
 export function bgGradient(props) {
   const direction = props?.direction || 'to bottom';

@@ -1,8 +1,5 @@
 import { alpha } from '@mui/material/styles';
 
-// ----------------------------------------------------------------------
-
-// SETUP COLORS
 const GREY = {
   0: '#FFFFFF',
   100: '#F9FAFB',
@@ -71,7 +68,7 @@ const ERROR = {
 };
 
 const palette = {
-  common: { black: '#000', white: '#fff' },
+  common: { black: '#000', white: '#fff' ,lightblue:'#ADD8E6',aliceblue:'#F0F8FF'},
   primary: PRIMARY,
   secondary: SECONDARY,
   info: INFO,

@@ -1,13 +1,10 @@
+import React,{ useState } from 'react';
+
 import { Helmet } from 'react-helmet-async';
-import { useState } from 'react';
-// @mui
 import { Container, Stack, Typography } from '@mui/material';
-// components
-import { ProductSort, ProductList, ProductCartWidget, ProductFilterSidebar } from '../sections/@dashboard/products';
-// mock
+import { ProductSort, ProductList, ProductCartWidget, ProductFilterSidebar } from '../sections/dashboard/products';
 import PRODUCTS from '../_mock/products';
 
-// ----------------------------------------------------------------------
 
 export default function ProductsPage() {
   const [openFilter, setOpenFilter] = useState(false);
@@ -23,7 +20,7 @@ export default function ProductsPage() {
   return (
     <>
       <Helmet>
-        <title> Dashboard: Products | Minimal UI </title>
+        <title> Dashin Academy </title>
       </Helmet>
 
       <Container>

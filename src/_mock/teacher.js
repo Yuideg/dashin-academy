@@ -1,0 +1,41 @@
+const teacher =[
+    {
+        "id":1,
+        "username":"DAR/0934/15",
+        "password":"password",
+        "first_name":"Abebe",
+        "middle_name":"Kebede",
+        "last_name":"Amanuel",
+        'religion':'orthodox',
+        "gender":"male",
+        "email":"email@gmail.com",
+        "department":4,
+        "major":"Major",
+        "minor":"Minor",
+        "degree":"BA",
+        "cgpa":"3.56",
+        "college":"Standard college",
+        "qualification":"Linear",
+        "experience":2,
+        "salary":6789.23,
+        "contract_type":"PERMANENT",
+        "tin_number":"007875432",
+        "phone":"+2519235678",
+        "emergency_phone":"+2519567823",
+        "marital_status":"single",
+        "current_address":1,
+        "permanent_address":2,
+        "bank":1,
+        "facebook_url":"facebook url",
+        "twitter_url":"twitter url",
+        "linkedin_url":"linkedin url",
+        "instagram_url":"instagram url",
+        "date_joined":"2023-08-21",
+        "birth_date":"2000-03-12",
+        "birth_place":"Addis Ababa",
+        "role":1,
+        "created_at":"2022-01-23"
+
+
+    }
+]
