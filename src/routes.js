@@ -9,11 +9,9 @@ import ErrorPage from "./components/error/error";
 import {EditInformation} from "./components/dashboard";
 import DashboardLayout from "./layouts/dashboard";
 import DashboardAppPage from "./pages/DashboardAppPage";
-import UserPage from "./pages/UserPage";
-import ProductsPage from "./pages/ProductsPage";
-import BlogPage from "./pages/BlogPage";
 import PasswordResetPage from "./pages/PasswordReset";
-import StudentList from "./views/students/StudentList";
+import TeachersList from "./views/teachers/TeachersList";
+import StudentsList from "./views/students/StudentsList";
 
 export default function Router() {
     const routes = useRoutes([
@@ -24,7 +22,10 @@ export default function Router() {
                 { element: <Navigate to="/dashboard/app" />, index: true },
                 { path: 'app', element: <DashboardAppPage /> },
                 { path: 'password-reset', element: <PasswordResetPage /> },
-                { path: 'students', element: <StudentList /> },
+                { path: 'students', element: <StudentsList /> },
+                { path: 'teachers', element: <TeachersList /> },
+                { path: 'register', element: <SignUp /> },
+
 
             ],
         },

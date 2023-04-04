@@ -134,21 +134,21 @@ export const navigations = [
             {
                 name: 'Teachers',
                 icon: <Teacher/>,
-                path: '/teachers',
+                path: '/dashboard/teachers',
                 type: 'image',
                 iconText: 'TC'
             },
             {
                 name: 'Parents',
                 icon: <Parent/>,
-                path: '/parents',
+                path: '/dashboard/parents',
                 type: 'image',
                 iconText: 'PT'
             },
             {
                 name: 'Directors',
                 icon: <Director/>,
-                path: '/directors',
+                path: '/dashboard/directors',
                 type: 'image',
                 iconText: 'B'
             },

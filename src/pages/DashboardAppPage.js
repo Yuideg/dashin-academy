@@ -37,7 +37,7 @@ export default function DashboardAppPage() {
 
                     <Grid item xs={12} sm={6} md={3}>
                         <AppWidgetSummary title="Total Teachers Count" total={223} color="info"
-                                          icon={'mdi:teacher'}/>
+                                          icon={'mdi:teachers'}/>
                     </Grid>
 
                     <Grid item xs={12} sm={6} md={3}>

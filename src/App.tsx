@@ -13,8 +13,8 @@ function App() {
         <ThemeProvider>
               <ScrollToTop />
               <StyledChart />
-              <Header sections={[]} title={''} />
-              <CourseAdd />
+              {/*<Header sections={[]} title={''} />*/}
+              {/*<CourseAdd />*/}
               <Router />
           </ThemeProvider>
       );

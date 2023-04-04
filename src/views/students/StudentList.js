@@ -20,8 +20,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import {styled} from "@mui/system";
-import {tableCellClasses} from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
+import {Fab, MenuItem, Popover, tableCellClasses} from "@mui/material";
 import studentsList from '../../_mock/student'
+import {Iconify} from "../../components/iconify";
+import {useState} from "react";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: theme.palette.common.aliceblue,
@@ -59,8 +62,6 @@ function createData(id, name, calories, fat, carbs, protein) {
 }
 
 const rows = studentsList
-console.log('rows data ',rows)
-
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
         return -1;
@@ -77,12 +78,7 @@ function getComparator(order, orderBy) {
         : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-// Since 2020 all major browsers ensure sort stability with Array.prototype.sort().
-// stableSort() brings sort stability to non-modern browsers (notably IE11). If you
-// only support modern browsers you can replace stableSort(exampleArray, exampleComparator)
-// with exampleArray.slice().sort(exampleComparator)
 function stableSort(array, comparator) {
-    console.log('studentsList ',array);
     const stabilizedThis = array.map((el, index) => [el, index]);
     stabilizedThis.sort((a, b) => {
         const order = comparator(a[0], b[0]);
@@ -108,24 +104,6 @@ const headCells = [
         label: 'Username',
     },
     {
-        key: 'first_name',
-        numeric: true,
-        disablePadding: false,
-        label: 'FirstName',
-    },
-    {
-        key: 'middle_name',
-        numeric: true,
-        disablePadding: false,
-        label: 'MiddleName',
-    },
-    {
-        key: 'last_name',
-        numeric: true,
-        disablePadding: false,
-        label: 'LastName',
-    },
-    {
         key: 'religion',
         numeric: true,
         disablePadding: false,
@@ -136,12 +114,6 @@ const headCells = [
         numeric: true,
         disablePadding: false,
         label: 'Gender',
-    },
-    {
-        key: 'email',
-        numeric: true,
-        disablePadding: false,
-        label: 'Email',
     },
     {
         key: 'phone',
@@ -186,11 +158,18 @@ const headCells = [
         label: 'Role',
     },
     {
+        key: 'updated_at',
+        numeric: true,
+        disablePadding: false,
+        label: 'UpdatedAt',
+    },
+    {
         key: 'created_at',
         numeric: true,
         disablePadding: false,
-        label: 'Created At',
+        label: 'CreatedAt',
     },
+    {}
 ];
 
 function EnhancedTableHead(props) {
@@ -303,6 +282,8 @@ EnhancedTableToolbar.propTypes = {
 };
 
 export default function StudentList() {
+    const [open, setOpen] = useState(null);
+
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
     const [selected, setSelected] = React.useState([]);
@@ -314,10 +295,15 @@ export default function StudentList() {
         setOrder(isAsc ? 'desc' : 'asc');
         setOrderBy(property);
     };
-
+    const handleOpenMenu = (event) => {
+        setOpen(event.currentTarget);
+    };
+    const handleCloseMenu = () => {
+        setOpen(null);
+    };
     const handleSelectAllClick = (event) => {
         if (event.target.checked) {
-            const newSelected = rows.map((n) => n.name);
+            const newSelected = rows.map((student) => student.username);
             setSelected(newSelected);
             return;
         }
@@ -361,6 +347,7 @@ export default function StudentList() {
     return (
         <Box sx={{ width: '100%' }}>
             <Paper sx={{ width: '100%', mb: 2 }}>
+
                 <EnhancedTableToolbar numSelected={selected.length} />
                 <TableContainer>
                     <Table
@@ -406,26 +393,25 @@ export default function StudentList() {
                                                 scope="row"
                                                 padding="normal"
                                                >{row.id}</StyledTableCell>
-                                            <StyledTableCell
-                                            >
-                                                {row.username}
-                                            </StyledTableCell>
-                                            <StyledTableCell >{row.first_name}</StyledTableCell>
-                                            <StyledTableCell >{row.middle_name}</StyledTableCell>
-                                            <StyledTableCell >{row.last_name}</StyledTableCell>
+                                            <StyledTableCell>{row.username}</StyledTableCell>
                                             <StyledTableCell >{row.religion}</StyledTableCell>
                                             <StyledTableCell >{row.gender}</StyledTableCell>
-                                            <StyledTableCell >{row.email}</StyledTableCell>
-
                                             <StyledTableCell >{row.phone}</StyledTableCell>
                                             <StyledTableCell >{row.emergency_phone}</StyledTableCell>
                                             <StyledTableCell >{row.section}</StyledTableCell>
                                             <StyledTableCell >{row.marital_status}</StyledTableCell>
-                                            <StyledTableCell >{row.birth_date}</StyledTableCell>
+                                            <StyledTableCell >{row.date_of_birth}</StyledTableCell>
                                             <StyledTableCell >{row.birth_place}</StyledTableCell>
 
                                             <StyledTableCell >{row.role}</StyledTableCell>
+                                            <StyledTableCell >{row.updated_at}</StyledTableCell>
                                             <StyledTableCell >{row.created_at}</StyledTableCell>
+                                            <TableCell align="right">
+                                                <IconButton size="large" color="inherit" onClick={handleOpenMenu}>
+                                                    <Iconify icon={'eva:more-vertical-fill'} />
+                                                </IconButton>
+                                            </TableCell>
+
 
                                         </StyledTableRow>
                                     );
@@ -449,6 +435,35 @@ export default function StudentList() {
                     onRowsPerPageChange={handleChangeRowsPerPage}
                 />
             </Paper>
+
+            <Popover
+                open={Boolean(open)}
+                anchorEl={open}
+                onClose={handleCloseMenu}
+                anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+                PaperProps={{
+                    sx: {
+                        p: 1,
+                        width: 140,
+                        '& .MuiMenuItem-root': {
+                            px: 1,
+                            typography: 'body2',
+                            borderRadius: 0.75,
+                        },
+                    },
+                }}
+            >
+                <MenuItem>
+                    <Iconify icon={'eva:edit-fill'} sx={{ mr: 2 }} />
+                    Edit
+                </MenuItem>
+
+                <MenuItem sx={{ color: 'error.main' }}>
+                    <Iconify icon={'eva:trash-2-outline'} sx={{ mr: 2 }} />
+                    Delete
+                </MenuItem>
+            </Popover>
 
         </Box>
     );

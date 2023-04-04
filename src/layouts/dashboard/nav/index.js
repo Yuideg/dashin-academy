@@ -4,9 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { styled, alpha } from '@mui/material/styles';
 import { Box, Drawer } from '@mui/material';
 import useResponsive from '../../../hooks/useResponsive';
-
 import LayoutSidenav from "./LayoutSidenav";
-
 
 const NAV_WIDTH = 280;
 

@@ -8,7 +8,7 @@ const role=[
     {
         "id":2,
         "name":"teacher",
-        'description':"teacher role",
+        'description':"teachers role",
         "created_at":'2022-08-26'
     },
     {

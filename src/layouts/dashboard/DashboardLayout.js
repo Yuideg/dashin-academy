@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
-
 import Header from './header';
 import Nav from "./nav";
-// import LayoutSidenav from "./nav/LayoutSidenav";
-
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 92;
